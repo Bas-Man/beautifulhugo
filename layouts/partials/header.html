@@ -22,9 +22,9 @@
     <div id="header-big-imgs" data-num-img={{len $bigimg}}
       {{range $i, $img := $bigimg}}
          {{ if (fileExists $img.src)}}
-          data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
+          data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
          {{else}}
-           data-img-src-{{add $i 1}}="{{$img.src | relURL }}"
+           data-img-src-{{add $i 1}}="{{ strings.TrimPrefix "/" $img.src | relURL }}"
          {{end}}
          {{ if $img.desc}}data-img-desc-{{add $i 1}}="{{$img.desc}}"{{end}}
          {{ if $img.position}}data-img-position-{{add $i 1}}="{{$img.position}}"{{end}}
@@ -34,7 +34,7 @@
   <header class="header-section {{ if $bigimg }}has-img{{ end }}">
     {{ if $bigimg }}
       {{- $firstimg := index $bigimg 0 }}
-    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{$firstimg.src | relURL}}');">
+    <div class="intro-header big-img{{ if eq $headerImgStyle "narrow" }} narrow-img{{ end }}" style="background-image: url('{{ strings.TrimPrefix "/" $firstimg.src | relURL }}');">
         <div class="container">
           <div class="row">
             <div class="{{$contentColClass}}">
