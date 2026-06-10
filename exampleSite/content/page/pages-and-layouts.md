@@ -43,6 +43,7 @@ Title comes from `homeTitle` (or the site title); `homeTitle` also controls the 
 Blog posts live under `content/post/` (or any directory listed in `mainSections`). They use `layouts/_default/single.html` with type `post`, which enables:
 
 - Post metadata in the header (date, reading time, word count, author)
+- Dates are shown unless `hidePostDates: true`
 - Subtitle rendered as an `<h2>`
 - Previous/next post navigation (side arrows on wide screens, bottom pager on narrow screens; disable with `showPostNav = false`)
 - Comments (if `comments: true`)
@@ -362,4 +363,22 @@ Or globally:
 ```toml
 [Params]
   showPageDates = true
+```
+
+### Show Post Dates
+
+By default, "post" type pages show dates. These can be disabled with:
+
+```yaml
+---
+title: My Page
+hidePostDates: true
+---
+```
+
+Or globally:
+
+```toml
+[Params]
+  hidePostDates = true
 ```
